@@ -203,10 +203,15 @@ body {
  *******************/
 
 	.storage-section {
+		padding: 2.6875rem 2.5rem;
 		align-self: end;
 	}
 	.storage-info {
 		text-align: start;
+	}
+
+	.progressBar-info {
+		margin-bottom: 0;
 	}
 
 	/****************
