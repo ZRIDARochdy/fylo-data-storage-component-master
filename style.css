@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+/* -------------------------------------------------------------------------- */
+/*                               Variables Style                              */
+/* -------------------------------------------------------------------------- */
+
+:root {
+	/*** Primary Color ***/
+	--gradient: hsl(6, 100%, 80%), hsl(335, 100%, 65%);
+
+	/*** Neutral Color ***/
+	--paleBlue: hsl(243, 100%, 93%);
+	--grayishBlue: hsl(229, 7%, 55%);
+	--darkBlue: hsl(228, 56%, 26%);
+	--veryDarkBlue: hsl(229, 57%, 11%);
+
+	/*** Typographie ***/
+	--primaryFont: 'Raleway', sans-serif;
+	--defaultFontSize: 0.875rem;
+	--regularFontWeight: 400;
+	--boldFontWeight: 700;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 Reset Style                                */
+/* -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	display: block;
+}
+ul[class] {
+	padding: 0;
+	list-style-type: none;
+}
+button {
+	font: inherit;
+	border: none;
+	outline: none;
+	background-color: transparent;
+}
+/* -------------------------------------------------------------------------- */
+/*                                General Style                               */
+/* -------------------------------------------------------------------------- */
+
+body {
+	display: grid;
+	place-content: center;
+	font-family: var(--primaryFont);
+	font-size: var(--defaultFontSize);
+	font-weight: var(--defaultFontWeight);
+	color: var(--paleBlue);
+	min-height: 100vh;
+	background-color: var(--veryDarkBlue);
+	background-image: url(./images/bg-mobile.png);
+	background-repeat: no-repeat;
+
+	padding: 2rem;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: minmax(100%, 20.3125rem);
+	gap: 1rem;
+	margin-bottom: 2.1875rem;
+}
+[class*='section'] {
+	background-color: var(--darkBlue);
+	box-shadow: 0 0 16px var(--veryDarkBlue);
+}
+
+/******************
+ * UPLOAD SECTION *
+ ******************/
+
+.upload-section {
+	padding: 2.5rem;
+	border-radius: 0.625rem;
+	border-top-right-radius: 6.25rem;
+}
+
+.logo {
+	margin-bottom: 2rem;
+}
+.uploaders-list {
+	display: flex;
+	gap: 1rem;
+}
+
+.uploader button {
+	display: grid;
+	place-content: center;
+	width: 3rem;
+	aspect-ratio: 1 / 1;
+	background-color: var(--veryDarkBlue);
+	border-radius: 0.625rem;
+}
+
+/*******************
+ * STORAGE SECTION *
+ *******************/
+
+.storage-section {
+	padding: 1.875rem;
+	border-radius: 0.625rem;
+	position: relative;
+}
+
+.storage-info {
+	text-align: center;
+	margin-bottom: 1.125rem;
+}
+.progressBar-container {
+	height: 1.25rem;
+	background-color: var(--veryDarkBlue);
+	border-radius: 100vmax;
+	margin-bottom: 0.75rem;
+	padding: 0.125rem;
+}
+.progressBar {
+	width: 75%;
+	height: 16px;
+	background: linear-gradient(to right, var(--gradient));
+	border-radius: 100vmax;
+	position: relative;
+}
+.progressBar::before {
+	content: '';
+	position: absolute;
+	width: 0.75rem;
+	aspect-ratio: 1 / 1;
+	background-color: var(--paleBlue);
+	border-radius: 100vmax;
+	top: 0.125rem;
+	right: 0.125rem;
+	box-shadow: 0 0 3px var(--veryDarkBlue);
+}
+.progressBar-info {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1.375rem;
+}
+.progressBar-info span {
+	font-size: 0.75rem;
+	font-weight: var(--boldFontWeight);
+}
+
+/****************
+ * STORAGE LEFT *
+ ****************/
+
+.storage-left {
+	width: 180px;
+	height: 72px;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translate(-50%, 50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+	background-color: var(--paleBlue);
+	color: var(--veryDarkBlue);
+	border-radius: 0.625rem;
+}
+.storage-left dt {
+	font-size: 2.5rem;
+	font-weight: var(--boldFontWeight);
+	color: var(--veryDarkBlue);
+}
+.storage-left dd {
+	text-transform: uppercase;
+	font-size: 0.75rem;
+	font-weight: var(--boldFontWeight);
+	color: var(--grayishBlue);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                Media Queries                               */
+/* -------------------------------------------------------------------------- */
+@media only screen and (min-width: 43.75em) {
+	body {
+		background-image: url(./images/bg-desktop.png);
+		background-position: bottom -30% left;
+	}
+	.container {
+		max-width: 920px;
+		display: grid;
+		grid-template-columns: minmax(20.3125rem, 1fr) 2fr;
+		margin-bottom: 0;
+	}
+
+	/*******************
+ * STORAGE SECTION *
+ *******************/
+
+	.storage-section {
+		align-self: end;
+	}
+	.storage-info {
+		text-align: start;
+	}
+
+	/****************
+ * STORAGE LEFT *
+ ****************/
+
+	.storage-left {
+		top: 0;
+		left: calc(100% - 1.875rem);
+		transform: translate(-100%, -70%);
+		border-bottom-right-radius: 0;
+	}
+	.storage-left::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		border: 22px solid hsl(0deg 0% 0% / 0%);
+		border-left: 22px solid var(--paleBlue);
+		transform: translate(50%, 35%) rotate(-45deg);
+	}
+}
