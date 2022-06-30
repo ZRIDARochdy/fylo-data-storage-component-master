@@ -189,7 +189,7 @@ body {
 @media only screen and (min-width: 43.75em) {
 	body {
 		background-image: url(./images/bg-desktop.png);
-		background-position: bottom -30% left;
+		background-position: bottom left;
 	}
 	.container {
 		max-width: 920px;
